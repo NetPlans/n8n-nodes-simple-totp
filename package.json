@@ -1,19 +1,20 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-simple-totp",
   "version": "0.1.0",
-  "description": "",
+  "description": "Simple TOTP Node for n8n.io",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "totp"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Thorsten Kalka",
+    "email": "thorsten.kalka28@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/Doppelnull/n8n-nodes-simple-totp.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +34,9 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Totp/Totp.node.js"
     ]
   },
   "devDependencies": {
@@ -51,5 +49,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "otpauth": "^9.4.1"
   }
 }

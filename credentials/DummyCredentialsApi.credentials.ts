@@ -5,11 +5,11 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class ExampleCredentialsApi implements ICredentialType {
-	name = 'exampleCredentialsApi';
-	displayName = 'Example Credentials API';
+export class DummyCredentialsApi implements ICredentialType {
+	name = 'dummyCredentialsApi';
+	displayName = 'Dummy Credentials API';
 
-	documentationUrl = 'https://your-docs-url';
+	documentationUrl = 'https://example.com/iDoNotExist';
 
 	properties: INodeProperties[] = [
 		// The credentials to get from user and save encrypted.
@@ -32,8 +32,7 @@ export class ExampleCredentialsApi implements ICredentialType {
 		},
 	];
 
-	// This credential is currently not used by any node directly
-	// but the HTTP Request node can use it to make requests.
+	// This credential not used by any node directly
 	// The credential is also testable due to the `test` property below
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
