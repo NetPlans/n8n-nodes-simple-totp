@@ -1,10 +1,10 @@
-import type {
+import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionTypes,
 } from 'n8n-workflow';
-import { NodeConnectionType } from 'n8n-workflow';
 import * as OTPAuth from 'otpauth';
 
 export class Totp implements INodeType {
@@ -20,8 +20,8 @@ export class Totp implements INodeType {
 			name: 'TOTP',
 		},
 		usableAsTool: true,
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		properties: [
 			{
 				displayName: 'TOTP Key',
@@ -30,7 +30,7 @@ export class Totp implements INodeType {
 				default: '',
 				placeholder: '',
 				description: 'The TOTP key to use for token generation',
-			}
+			},
 		],
 	};
 
@@ -38,13 +38,12 @@ export class Totp implements INodeType {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
 
-		const token = this.getNodeParameter("totpKey",0,"") as string;
-
+		const token = this.getNodeParameter('totpKey', 0, '') as string;
 
 		const options = {
-			algorithm: "SHA1",
+			algorithm: 'SHA1',
 			digits: 6,
-			period: 30
+			period: 30,
 		};
 
 		const totp = new OTPAuth.TOTP({
